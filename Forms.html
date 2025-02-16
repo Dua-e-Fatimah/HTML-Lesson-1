@@ -4,6 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        button{
+            background-color:firebrick;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        fieldset{
+            color:black;
+            animation-name: regorm;
+            animation-duration: 10s;
+        }
+        @keyframes regorm{
+            10% {color: red;}
+            15% {color: orangered;}
+            20% {color: orange;}
+            25% {color: gold;}
+            30% {color: yellow;}
+            35% {color: yellowgreen;}
+            40% {color: green;}
+            45% {color: skyblue;}
+            50% {color: blue;}
+            55% {color:midnightblue;}
+            60% {color: darkblue;}
+            65% {color: navy;}
+            70% {color: indigo;}
+            75% {color: darkmagenta;}
+            80% {color: purple;}
+            85% {color: darkorchid}
+            90% {color: violet;}
+            95% {color: pink;}
+            100% {color:hotpink;}
+        }
+        input{
+            color:slategrey;
+            font-weight: bolder;
+        }
+        form{
+            background: linear-gradient(pink, skyblue, yellow, crimson);
+        }
+    </style>
 </head>
 <body>
     <form>
@@ -45,15 +85,7 @@
                 <option> Egypt</option>
                 <option> Finland</option>
             </select>
-            
-            <p> What is your Age?</p>
-            <input type="checkbox"> +13
-            <input type="checkbox"> +16
-            <input type="checkbox"> +18
-            <input type="checkbox"> +21
-            <input type="checkbox"> +40
-            <input type="checkbox"> +60
-<br> <br>
+         <br> <br>
             <input type="submit">
             <button> Cancel</button>
 
