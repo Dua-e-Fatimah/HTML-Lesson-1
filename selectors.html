@@ -7,12 +7,15 @@
 </head>
  <style>
     body {
-        background-color:darkblue;
+        background-color:midnightblue;
     }
     h1 {
         color: aliceblue;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         font-weight: bolder;
+    }
+    p {
+        color: silver;
     }
     /* Attribute Selector */
     a {
@@ -48,6 +51,19 @@
     ul li::before {
         content: "✨";
     }
+    /* ::after Pseudo-element */
+    ul li::after {
+        content: "✨";
+    }
+    /* ::before Pseudo-element */
+    a::before {
+        content: "🚀";
+    }
+     /* ::first-letter Pseudo-element */
+     p::first-letter {
+        font-size: 200%;
+        color: silver;
+     }
 
  </style>
 <body>
