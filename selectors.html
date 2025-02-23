@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <style>
+    body {
+        background-color:darkblue;
+    }
+    h1 {
+        color: aliceblue;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-weight: bolder;
+    }
+    /* Attribute Selector */
+    a {
+        color: cornflowerblue;
+        text-decoration: underline;
+    }
+    a:hover {
+        color: dimgray;
+    }
+    /* Child Selector */
+    ul > li {
+        font-weight: bold;
+        color: lightskyblue;
+    }
+    /* Sibling Selctor */
+    h1 + p {
+        padding: 10px;
+        border-radius: 5px;
+    }
+    /* :hover Pseudo-class */
+    ul li :hover {
+        color:lightblue;
+    }
+    /* nth-child(n) Pseudo-class */
+    ul li :nth-child(3) {
+        background-color: black;
+    }
+    /* not(selector) Pseudo-class*/
+    p :not(:first-of-type) {
+        text-decoration: underline;
+    }
+    /* ::before Pseudo-element */
+    ul li::before {
+        content: "✨";
+    }
+
+ </style>
+<body>
+    <h1>
+        Welcome! </h1>
+        <ul>
+            <li> Moon Missions. </li>
+            <li> Mars Rovers. </li>
+            <li> International Space Station. </li>
+            <li> Telescopes and Stars. </li>
+            <li> Black Holes Mysteries. </li>
+        </ul>
+        <p> 
+            Space has always captivated human imagination. It's a journey to the unknown!
+        </p>
+        <p>
+            From the moon to distant galaxies, we continue to explore the vastness of space.
+        </p>
+        <a href="#"> Join our Mission. </a> <br>
+        <a href="#"> Latest Space News. </a> <br>
+        <a href="#"> Gallery of the Universe. </a>
+</body>
+</html>
