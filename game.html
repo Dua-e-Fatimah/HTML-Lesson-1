@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cookie Clicker Lite</title>
+  <link rel="stylesheet" />
+</head>
+<style>
+    body {
+  font-family: 'Arial', sans-serif;
+  background: #fdf6e3;
+  color: #333;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.game-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  background: #fff3cd;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+button {
+  font-size: 18px;
+  padding: 15px 25px;
+  margin: 15px;
+  border: none;
+  border-radius: 10px;
+  background: #f4a261;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+button:hover {
+  background: #e76f51;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+</style>
+<body>
+  <div class="game-container">
+    <h1>Cookie Clicker Lite 🍪</h1>
+    <p id="score">Score: 0</p>
+    <button id="cookie">🍪 Click me!</button>
+    <button id="autoClicker">Buy Auto Clicker (10 pts)</button>
+    <p id="autoCount">Auto Clickers: 0</p>
+  </div>
+  <script>
+    let score = 0;
+let autoClickers = 0;
+
+const scoreDisplay = document.getElementById('score');
+const cookieBtn = document.getElementById('cookie');
+const autoBtn = document.getElementById('autoClicker');
+const autoCount = document.getElementById('autoCount');
+
+cookieBtn.addEventListener('click', () => {
+  score++;
+  updateScore();
+});
+
+autoBtn.addEventListener('click', () => {
+  if (score >= 10) {
+    score -= 10;
+    autoClickers++;
+    updateScore();
+    autoCount.textContent = `Auto Clickers: ${autoClickers}`;
+  }
+});
+
+function updateScore() {
+  scoreDisplay.textContent = `Score: ${score}`;
+}
+
+setInterval(() => {
+  score += autoClickers;
+  updateScore();
+}, 1000); // every second
+
+  </script>
+</body>
+</html>
