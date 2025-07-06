@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Survival: Escape the Enemy</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      font-family: sans-serif;
+    }
+    canvas {
+      background: #222;
+      display: block;
+      margin: 20px auto;
+      border: 2px solid #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>🏃 Survival Game: Escape!</h1>
+  <canvas id="game" width="500" height="500"></canvas>
+  <p>Use WASD or Arrow Keys to move. Don't get caught!</p>
+  <h2 id="status"></h2>
+
+  <script>
+    const canvas = document.getElementById("game");
+    const ctx = canvas.getContext("2d");
+
+    const tileSize = 25;
+    const gridWidth = canvas.width / tileSize;
+    const gridHeight = canvas.height / tileSize;
+
+    let gameOver = false;
+
+    const player = { x: 2, y: 2, color: "lime" };
+    const enemy = { x: gridWidth - 3, y: gridHeight - 3, color: "red" };
+
+    const keys = {};
+    document.addEventListener("keydown", e => keys[e.key.toLowerCase()] = true);
+    document.addEventListener("keyup", e => keys[e.key.toLowerCase()] = false);
+
+    function movePlayer() {
+      if (gameOver) return;
+
+      if (keys["w"] || keys["arrowup"]) player.y--;
+      if (keys["s"] || keys["arrowdown"]) player.y++;
+      if (keys["a"] || keys["arrowleft"]) player.x--;
+      if (keys["d"] || keys["arrowright"]) player.x++;
+
+      // Clamp movement
+      player.x = Math.max(0, Math.min(gridWidth - 1, player.x));
+      player.y = Math.max(0, Math.min(gridHeight - 1, player.y));
+    }
+
+    let frameCount = 0;
+
+function moveEnemy() {
+  // Move enemy only every 15 frames
+  if (frameCount % 3 !== 0 || gameOver) return;
+
+  const dx = player.x - enemy.x;
+  const dy = player.y - enemy.y;
+
+  if (Math.abs(dx) > Math.abs(dy)) {
+    enemy.x += dx > 0 ? 1 : -1;
+  } else {
+    enemy.y += dy > 0 ? 1 : -1;
+  }
+}
+
+    function checkCollision() {
+      if (player.x === enemy.x && player.y === enemy.y) {
+        gameOver = true;
+        document.getElementById("status").textContent = "💀 Game Over: You Got Caught!";
+      }
+    }
+
+    function drawTile(obj) {
+      ctx.fillStyle = obj.color;
+      ctx.fillRect(obj.x * tileSize, obj.y * tileSize, tileSize, tileSize);
+    }
+
+    function drawGrid() {
+      ctx.strokeStyle = "#333";
+      for (let i = 0; i <= canvas.width; i += tileSize) {
+        ctx.beginPath();
+        ctx.moveTo(i, 0);
+        ctx.lineTo(i, canvas.height);
+        ctx.stroke();
+      }
+      for (let i = 0; i <= canvas.height; i += tileSize) {
+        ctx.beginPath();
+        ctx.moveTo(0, i);
+        ctx.lineTo(canvas.width, i);
+        ctx.stroke();
+      }
+    }
+
+    function updateGame() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawGrid();
+  movePlayer();
+  frameCount++;
+  moveEnemy();
+  checkCollision();
+  drawTile(player);
+  drawTile(enemy);
+
+  if (!gameOver) {
+    requestAnimationFrame(updateGame);
+  }
+}
+
+
+    updateGame();
+  </script>
+</body>
+</html>
